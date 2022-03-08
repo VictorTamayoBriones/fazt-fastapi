@@ -3,8 +3,16 @@ from typing import Text, Optional
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from uuid import uuid4 as uuid
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=['*'],
+    allow_methods=["*"],
+    allow_headers=["*"]
+)
 
 posts = []
 
